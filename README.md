@@ -14,6 +14,7 @@
 自分の知識や経験を他者に話したいと思った時、話ネタとして何か探す時、同じような経験をしている人いないか調べる時
 
 ## 設計書
+実装機能リスト：https://docs.google.com/spreadsheets/d/1lTxcoZzrZZAUu-3nfnx5I9dN9Ljmb_hbZSbmoxYngBs/edit?usp=sharing
 
 
 ## 開発環境
