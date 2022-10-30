@@ -15,8 +15,11 @@
 
 ## 設計書
 実装機能リスト：https://docs.google.com/spreadsheets/d/1lTxcoZzrZZAUu-3nfnx5I9dN9Ljmb_hbZSbmoxYngBs/edit?usp=sharing
+
 ER図：https://drive.google.com/file/d/1TUm7Qnu_jXxvLoWDciuUAGigiQVG53tl/view?usp=sharing
+
 テーブル定義書：https://docs.google.com/spreadsheets/d/1B9yx7Al0FtY8HJepcreTaCudFx211iD-Az6A5kNrMKg/edit?usp=sharing
+
 アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1diVxKkowwWWm6kiCp_5jJXeFN1CI4cIbznMMmKetiGw/edit?usp=sharing
 
 
