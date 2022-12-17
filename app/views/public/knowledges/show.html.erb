@@ -1,0 +1,70 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/knowledges/show.css' %>
+<% end %>
+<div class="container-fluid h-100 allbox pt-5 mx-0 d-flex flex-column align-items-center">
+  <div class="row justify-content-center py-2 title">
+    <div class="col-md-10 pl-3 pr-0 d-flex flex-column justify-content-center">
+      <div class="tag mb-1">
+        <span class="mr-2"><%= @knowledge.created_at.strftime('%Y/%m/%d') %></span>
+        <span class="classification"><%= @knowledge.classification_i18n %></span>
+        <span class="category"><%= @knowledge.category.name %></span>
+      </div>
+      <h4 class="mb-0 px-4 font-weight-bold text-center"><%= @knowledge.title %></h4>
+    </div>
+    <div class="col-md-2 pl-0 pr-3 avg-review">
+      <p class="mb-0 text-center">平均レビュー</p>
+      <div class="average-score">
+        <div class="average-star-rating">
+          <div class="star-rating-front" style="width: <%= @knowledge.avg_rate_percentage %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+        <div class="average-score-display">
+          <%= @knowledge.avg_rate %>/5
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-end my-2 link">
+  <% if @knowledge.user == current_user %>
+  <%= link_to "編集する", edit_knowledge_path(@knowledge.id), class: 'btn btn-success mr-3' %>
+  <%= link_to "削除する", knowledge_path(@knowledge.id), method: :delete, class: 'btn btn-danger mr-3' %>
+  <% end %>
+  </div>
+
+  <div class="row justify-content-center content">
+    <div class="col-md-4 px-0 text-center">
+      <%= image_tag @knowledge.get_image, class: 'image1'%>
+    </div>
+    <div class="col-md-8 content-main">
+      <%= @knowledge.content %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-2 content">
+  </div>
+
+  <div class="row d-block justify-content-center my-2 px-4 review">
+    <div class="pt-3">
+      <h5 class="d-inline"><u>＜レビュー・コメント一覧＞</u></h5>
+      <p class="comments-number">コメント数：<%= @knowledge.comments.count %>件</p>
+      <%= link_to "コメントする", new_knowledge_comment_path(@knowledge.id), class: 'btn btn-primary' %>
+    </div>
+    <div class="row mx-0 mt-3 flex-column">
+      <% @knowledge.comments.each do |comment| %>
+      <div class="col-md-12 comment mb-3 py-1">
+        <div class="contribute d-flex align-items-center">
+          <%= image_tag comment.user.get_profile_image, class: 'profile_image mr-2' %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+          <span class="star-rating ml-2" data-rate="<%= comment.rate %>">　</span>
+          <% if comment.user == current_user %>
+          <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id), method: :delete, class: 'btn btn-danger' %>
+          <% end %>
+        </div>
+        <%= comment.content %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

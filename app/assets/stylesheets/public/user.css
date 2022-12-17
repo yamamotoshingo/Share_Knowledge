@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.subbox {
+  margin: 0px 24px;
+}
+
+.profile-information {
+  border: solid 1px black;
+  margin-right: 24px;
+}
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.profile-image-select {
+  display: none;
+}
+
+.profile-image-label {
+  position: absolute;
+  Top: 30%;
+  Right: 25%;
+  font-size: 2em
+}
+
+label {
+  margin-bottom: 2px;
+}
+
+.btn1 {
+  width: 90px;
+  background-color: #FFB6C1;
+  border: solid 1.5px red;
+  border-radius: 5px;
+  margin-right: 12px;
+}
+
+.btn2 {
+  width: 90px;
+  background-color: #D9E5FF;
+  border: solid 1.5px blue;
+  border-radius: 5px;
+}
+
+.btn3 {
+  width: 80px;
+  background-color: #FFB6C1;
+  border: solid 1.5px red;
+  border-radius: 5px;
+  margin-right: 12px;
+  padding: 3px 12px;
+}
+
+.btn4 {
+  width: 80px;
+  background-color: #D9E5FF;
+  border: solid 1.5px blue;
+  border-radius: 5px;
+  padding: 3px 12px;
+}
+
+.image1 {
+  width: 100px;
+  height: 80px;
+}
+
+.article-list, .article {
+  border: solid 1px black;
+}
+
+.article-detail {
+  flex-wrap: wrap;
+  padding-left: 16px;
+}
+
+.average-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.average-star-rating {
+  position: relative;
+  font-size: 20px;
+}
+
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffb448;
+}
+
+.star-rating-back {
+  color: #e1e1e1;
+}
+
+.average-score-display {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.date {
+  font-size: 18px;
+}
+
+.category {
+  background-color: #DCC2FF;
+  border: solid 2px #9900FF;
+  border-radius: 5px;
+  padding: 1px 10px;
+}
+
+.classification {
+  background-color: #CBFFD3;
+  border: solid 2px #339933;
+  border-radius: 5px;
+  padding: 1px 10px;
+}
+
+.per span {
+  font-size: 18px;
+}
+
+
+@media (max-width: 840px) {
+  .subbox {
+  margin: 0px;
+  }
+}
+
+@media (max-width: 767.5px) {
+  .subbox {
+  margin: 0px 24px;
+  }
+
+  .profile-information {
+  border: solid 1px black;
+  margin-right: 0px;
+  margin-bottom: 24px;
+  width: 350px;
+  }
+}
+

@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.allbox {
+  background-image: url(nature.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.box {
+  border: solid 1px black;
+  background-color: white;
+  min-height: 75%;
+}
+
+.form1 {
+  flex-grow: 1;
+}
+
+.form2 {
+  flex-grow: 1;
+  margin-left: 2rem;
+}
+
+#email, #password {
+  padding-left: 32px;
+}
+
+.email, .password {
+  position: absolute;
+  Top: 2px;
+  Left: 6px;
+  font-size: 1.5em;
+}
+
+#danger1, #danger2 {
+  color: red;
+}

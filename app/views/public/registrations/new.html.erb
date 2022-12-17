@@ -1,0 +1,64 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/registrations.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-7 col-lg-6 box">
+      <h3 class="text-center my-5">新規登録</h3>
+      <%= form_with model: @user, url: registration_path(resource_name) do |f| %>
+      <div class="row field justify-content-center mb-3">
+        <div class="col-xl-8 col-md-11 d-flex px-0">
+          <%= f.label :nickname, "ニックネーム：", class: 'label1' %>
+          <div class="form1 position-relative px-0">
+          <i class="fa-solid fa-user nickname"></i>
+          <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: 'w-100', id: "nickname" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row field justify-content-center mb-3">
+        <div class="col-xl-8 col-md-11 d-flex px-0">
+          <%= f.label :email, "メールアドレス：", class: 'label2' %>
+          <div class="form2 position-relative px-0">
+          <i class="fa-solid fa-envelope email"></i>
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: 'w-100', id: "email" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row field justify-content-center mb-3">
+        <div class="col-xl-8 col-md-11 d-flex px-0">
+          <div class="label3 text-right">
+          <%= f.label :password, "パスワード", class: 'mb-0' %>
+          <% if @minimum_password_length %>
+          <p>(<%= @minimum_password_length %>文字以上)：</p>
+          <% end %>
+          </div>
+          <div class="form3 position-relative px-0">
+            <i class="fa-solid fa-lock password"></i>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: 'w-100', id: "password1" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row field justify-content-center mb-4">
+        <div class="col-xl-8 col-md-11 d-flex px-0">
+          <div class="label4 text-right">
+          <%= f.label :password_confirmation, "パスワード(確認)：" %>
+          </div>
+          <div class="form4 position-relative px-0">
+            <i class="fa-solid fa-lock password"></i>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認)", class: 'w-100', id: "password2" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions text-center mb-3">
+        <%= f.submit "登録", class: 'btn btn-success rounded-pill w-25' %>
+      </div>
+      <% end %>
+
+      <%= render "public/shared/links" %>
+    </div>
+  </div>
+</div>

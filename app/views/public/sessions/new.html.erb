@@ -1,0 +1,39 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/sessions.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-6 box">
+      <h3 class="text-center my-5">ログイン</h3>
+      <%= form_with model: @user, url: session_path(resource_name) do |f| %>
+      <div class="row field justify-content-center mb-4">
+        <div class="col-xl-8 col-md-10 d-flex px-0">
+          <%= f.label :email, "メールアドレス：" %>
+          <div class="form1 position-relative px-0">
+            <i class="fa-solid fa-envelope email"></i>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'w-100', id: "email" %>
+            <div id="danger1"><%= flash[:danger1] %></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row field justify-content-center mb-4">
+        <div class="col-xl-8 col-md-10 d-flex px-0">
+          <%= f.label :password, "パスワード：" %>
+          <div class="form2 position-relative px-0">
+            <i class="fa-solid fa-lock password"></i>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'w-100', id: "password" %>
+            <div id="danger2"><%= flash[:danger2] %></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions text-center mb-4">
+         <%= f.submit "ログイン", class: 'btn btn-success rounded-pill w-25' %>
+      </div>
+      <% end %>
+
+      <%= render "public/shared/links" %>
+    </div>
+  </div>
+</div>

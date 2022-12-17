@@ -1,0 +1,69 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/top.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row flex-column justify-content-center align-items-center h-100">
+    <h5 class="text-danger font-weight-bold mt-2">＜高評価TOP10ランキング＞</h5>
+    <div class="col-md-10 col-xl-7 box">
+      <table class="w-100 text-left table-condensed">
+        <thead>
+          <tr class= "header">
+            <th class="text-center col1">準位</th>
+            <th class="col2">タイトル(分類・カテゴリー)</th>
+            <th class="col3 text-center">平均レビュー</th>
+          </tr>
+        </thead>
+        <tbody class=" border-bottom">
+        <% image = ["first.png", "second.png", "third.png"] %>
+        <% @knowledges.each_with_index do |knowledge, i| %>
+          <tr>
+            <td class="text-center">
+              <% if i <= 2 %>
+                <%= image_tag image[i], class: 'ranking-image' %>
+              <% else %>
+                <h5><%= i + 1 %></h5>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to knowledge_path(knowledge.id), class: 'text-dark font-weight-bold knowledge-title' do %>
+              <%= knowledge.title %>
+              <% end %>
+              <div class="classification-and-category">
+                <span class="classification"><%= knowledge.classification_i18n %></span>
+                <span class="category"><%= knowledge.category.name %></span>
+              </div>
+            </td>
+            <td>
+              <div class="average-score">
+                <div class="average-star-rating">
+                  <div class="star-rating-front" style="width: <%= knowledge.avg_rate_percentage %>%">★★★★★</div>
+                  <div class="star-rating-back">★★★★★</div>
+                </div>
+                <div class="average-score-display">
+                  <%= knowledge.avg_rate %>/5
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        <% if @knowledges.count < 10 %>
+          <% for i in (@knowledges.count+1)..9 %>
+            <tr>
+            <td class="text-center">
+              <% if i <= 3 %>
+                <% i = i - 1 %>
+                <%= image_tag image[i], class: 'ranking-image' %>
+              <% else %>
+                <h5><%= i + 1 %></h5>
+              <% end %>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

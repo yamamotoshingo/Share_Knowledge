@@ -1,15 +1,105 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 90px;
+}
+
+footer {
+  background-color: silver;
+  height: 90px;
+}
+
+main {
+  padding-bottom: 90px;
+  flex: 1;
+}
+
+footer p {
+  font-family: "Comic Sans MS";
+}
+
+.logo {
+    width: 450px;
+    height: 75px;
+}
+
+.title2 {
+  width: 400px;
+  height: 75px;
+}
+nav {
+    align-items: end;
+    padding: 0px 4rem;
+    height: 100%;
+    background-color: silver;
+}
+
+ul {
+  display: flex;
+}
+
+.active {
+  display: none;
+}
+.hamburger {
+  display: none;
+  font-size: 2.5em;
+}
+.cross {
+  display: none;
+  font-size: 2.5em;
+}
+
+@media (max-width: 991px) {
+
+  nav {
+    position: relative;
+    align-items: center;
+  }
+
+  .nav-button {
+    display: inline-block;
+    transition: all 0.4s;
+  }
+
+  .active {
+    display: inline;
+  }
+
+  ul {
+      position: absolute;
+      flex-direction: column;
+      display: none;
+      border: solid 1px black;
+      background-color: rgba(0, 153, 255, 0.5);
+      color: black;
+      width: 200px;
+      Top: 79px;
+      Right: 0px;
+  }
+
+  ul .active{
+    display: flex;
+  }
+
+  li {
+    border-top: solid 1px;
+  }
+}
+@media (max-width: 571px) {
+  .logo {
+    width: 90%;
+  }
+  nav {
+    padding: 0px 1px;
+  }
+  .title2 {
+    width: 90%;
+    padding: 0 auto;
+  }
+}
+

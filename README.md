@@ -1,4 +1,4 @@
-# share_knowledge
+# Share_Knowledges
 
 ## サイト概要
 ### サイトテーマ
@@ -9,18 +9,26 @@
 
 ### ターゲットユーザ
 - 自分の知識や経験を他者に知ってもらいたいと思っている人
+- 自分の知識や経験を記録として残したい人
 - 話ネタとして何か探している人
 - 新しいことを知ることが好きな人
 - 困っている人
 
 ### 主な利用シーン
 - 自分の知識や経験を他者に話したいと思った時
+- 忘れないように知識や経験を記録したい時
 - 話ネタとして何か探す時
 - 時間を持て余している時
 - 同じような経験をしている人いないか調べる時
 
 ## 設計書
 - 実装機能リスト：https://docs.google.com/spreadsheets/d/1lTxcoZzrZZAUu-3nfnx5I9dN9Ljmb_hbZSbmoxYngBs/edit?usp=sharing
+
+- UI Flows(ユーザー側)：https://drive.google.com/file/d/1_p5tcaE7zJqx-J8vCr7yvJqTqbjlp_35/view?usp=sharing
+- UI Flows(管理者)：https://drive.google.com/file/d/1q3QITNdh19eIPQqb9Mb0hW7h_i5DON1l/view?usp=sharing
+
+- ワイヤーフレーム(ユーザー)：https://drive.google.com/file/d/1QyqmoqS2nJdYch7rBxV7BkvZzu9aKvfL/view?usp=sharing
+- ワイヤーフレーム(管理者)：https://drive.google.com/file/d/1UZCrTiy9PVKcRYirrPHB8uETPWL2iY-_/view?usp=sharing
 
 - ER図：https://drive.google.com/file/d/1TUm7Qnu_jXxvLoWDciuUAGigiQVG53tl/view?usp=sharing
 
@@ -37,4 +45,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です。
+- O-DAN FREE PHOTO：https://unsplash.com/ja/%E5%86%99%E7%9C%9F/LkFme_lYghs
+- イラストAC：https://www.ac-illust.com/main/detail.php?id=23166220&word=%E9%9B%BB%E7%90%83%E3%82%92%E6%8E%B2%E3%81%92%E3%82%8B%E4%BA%BA

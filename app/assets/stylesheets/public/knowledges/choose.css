@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.allbox {
+  background-image: url(branch.png);
+  background-position: center center;
+  background-size: cover;
+}
+
+.box1, .box2 {
+  min-height: 75%;
+  border: solid 1px black;
+}
+
+.box1 {
+  margin-right: 48px;
+}
+
+.image1 {
+  width: 75%;
+  height: 40%;
+  margin-bottom: 24px;
+}
+
+.image2 {
+  width: 180px;
+  height: 70px;
+  margin-bottom: 16px;
+}
+
+.btn1 {
+  background-color: #CBFFD3;
+  border: solid 2px #339933;
+  width: 50%;
+}
+
+.btn2 {
+  background-color: #DCC2FF;
+  border: solid 2px #9900FF;
+  width: 50%;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+@media (max-height: 780px) {
+  .image1 {
+    margin-bottom: 12px;
+  }
+
+  .image2 {
+    margin-bottom: 0px;
+    width: 140px;
+    height: 50px;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 0px;
+  }
+
+}
+
+@media (max-height: 615px) {
+  .box1 {
+    margin-right: 12px;
+  }
+
+  .box1, .box2 {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 576px) {
+  .box1, .box2 {
+    width: 50%;
+    min-height: 50%;
+    margin: 0px;
+  }
+
+  .image2 {
+    width: 45%;
+  }
+
+  p {
+    font-size: 0.7rem;
+  }
+
+.btn1, .btn2 {
+  font-size: 0.8rem;
+  width: 40%;
+}
+  .subbox {
+    flex-wrap: nowrap;
+  }
+}

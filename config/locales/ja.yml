@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+      knowledge:
+        title: タイトル
+        content: コンテンツ
+        category_id: カテゴリー
+  enums:
+    knowledge:
+      classification:
+        trivia: "雑学"
+        experience: "経験談"
+  views:
+    pagination:
+      first: "≪"
+      last: "≫"
+      next: ">"
+      previous: "<"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "<b>0</b> 件"
+          one: "<b>1</b> 件"
+          other: "<b>%{count}</b> 件"
+      more_pages:
+        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> 件/ <b>%{total}</b> 件中"

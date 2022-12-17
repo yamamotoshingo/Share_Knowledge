@@ -1,0 +1,60 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/knowledges/new.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-8 col-xl-6 box">
+      <%= form_with model: @knowledge, url: knowledges_path, method: :POST, id: 'parent' do |f| %>
+      <div class="row justify-content-center align-items-center position-relative mx-5 mt-5 title">
+        <div class="classification d-flex text-center">
+          <%= f.radio_button :classification, Knowledge.classifications.key(0), checked: true, class: 'radiobutton new-classification1' %>
+          <%= f.label :classification, "雑学", value: Knowledge.classifications.key(0), class: 'label mb-0 rounded', name: 'new-classification1-label' %>
+          <%= f.radio_button :classification, Knowledge.classifications.key(1), class: 'radiobutton new-classification1' %>
+          <%= f.label :classification, "経験談", value: Knowledge.classifications.key(1), class: 'label mb-0 rounded', name: 'new-classification1-label' %>
+        </div>
+        <h4 class="mb-0">投稿フォーム</h4>
+      </div>
+
+      <div class="form-group mx-5">
+      <%= f.label :title, "＜タイトル＞", class: 'mb-1' %><br />
+      <%= f.text_field :title, placeholder: "タイトル", class: 'w-100 px-2', id: 'new-title1' %>
+      </div>
+
+      <div class="form-group mx-5 d-flex flex-column content">
+      <%= f.label :content, "＜コンテンツ＞", class: 'mb-1' %>
+      <%= f.text_area :content, placeholder: "コンテンツ", class: 'w-100 px-2 flex-grow-1', id: 'new-content1' %>
+      </div>
+
+      <div class="form-group mx-5">
+      <%= f.label :image, "＜関連画像＞", class: 'mb-1' %><br />
+      <label for="image">
+        <span class="button">画像を選択</span>
+        <%= f.file_field :image, accept: "image/*", id: 'image', class: 'w-100' %>
+      </label>
+      <div id="file-name"></div>
+      </div>
+
+      <div class="row position-relative mx-0">
+        <div class="col-md-12 pl-5 pr-0">
+          <%= f.label :category_id, "＜カテゴリー＞", class: 'mb-1' %><br />
+          <%= f.select :category_id, @categories.map { |category| [category.name, category.id] }, {prompt: "--選択してください--"}, class: 'category-select' %>
+        </div>
+        <div class="col-md-12 text-center btn1">
+          <%= f.submit '投稿する', class: 'btn btn-primary rounded-pill w-25' %>
+        </div>
+
+      <% end %>
+      <%= form_with model: @category, url: categories_path, method: :POST, form: 'parent' do |f| %>
+      <div class="new-category d-flex">
+      <span class="mr-2">選択肢がない場合→</span>
+      <%= f.text_field :name, placeholder: "カテゴリー" %>
+      <%= f.hidden_field :title, id: 'new-title2' %>
+      <%= f.hidden_field :content, id: 'new-content2' %>
+      <%= f.hidden_field :classification, id: 'new-classification2' %>
+      <%= f.submit "登録", class: 'btn btn-primary  py-0 btn2' %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

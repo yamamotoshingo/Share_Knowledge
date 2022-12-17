@@ -1,0 +1,76 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'public/user.css' %>
+<% end %>
+<div class="container-fluid h-100 allbox pt-4 px-0">
+  <div class="row justify-content-center px-0 subbox">
+    <div class="col-xl-3 col-md-4 profile-information">
+      <div class="text-center my-3">
+        <%= image_tag @user.get_profile_image, class: 'profile-image' %>
+      </div>
+      <%= form_with model: @user, url: users_path, method: :PATCH do |f| %>
+        <%= f.label :profile_image, class: 'fa-solid fa-camera profile-image-label' do %>
+          <%= f.file_field :profile_image, class: 'profile-image-select' %>
+        <% end %>
+        <div class="form-group mb-2">
+          <%= f.label :nickname, "ニックネーム" %>
+          <%= f.text_field :nickname, class: 'w-100' %>
+        </div>
+        <div class="form-group mb-2">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.text_field :email, class: 'w-100' %>
+        </div>
+        <div class="form-group mb-2">
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, class: 'w-100' %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.label :password_confirmation, "パスワード(確認)" %>
+          <%= f.password_field :password_confirmation, class: 'w-100' %>
+        </div>
+        <div class="submit text-center mb-3">
+          <%= f.submit "更新", class: 'btn btn1', data: { confirm: "本当に変更しますか？" } %>
+          <%= link_to "退会", withdrawal_users_path, data: { confirm: "本当に退会しますか？"}, method: :PATCH, class: 'btn btn2' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xl-8 col-md-7 my-article-list">
+      <div class="row flex-column article-list px-2 pt-3">
+        <div class="col-md-12 mb-3 per d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">My投稿一覧</h4>
+          <span><%= page_entries_info @knowledges %></span>
+          <span><%= paginate @knowledges %>　</span>
+        </div>
+        <% @knowledges.each do |knowledge| %>
+        <%= link_to knowledge_path(knowledge.id), class: 'text-dark' do %>
+        <div class="col-md-12 d-flex flex-column article px-3 mb-3 py-1">
+          <h5 class="font-weight-bold"><%= knowledge.title %></h5>
+          <div class="article-content d-flex">
+            <%= image_tag knowledge.get_image, class: 'image1' %>
+            <div class="article-information d-flex flex-column justify-content-center flex-grow-1">
+              <div class="article-detail d-flex align-items-center mb-2">
+                <span class="classification mr-2"><%= knowledge.classification_i18n %></span>
+                <span class="category mr-2"><%= knowledge.category.name %></span>
+                <div class="average-score mr-2">
+                  <div class="average-star-rating">
+                    <div class="star-rating-front" style="width: <%= knowledge.avg_rate_percentage %>%">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  <div class="average-score-display">
+                    <%= knowledge.avg_rate %>/5
+                  </div>
+                </div>
+                <span class="date"><%= knowledge.created_at.strftime('%Y/%m/%d') %></span>
+              </div>
+              <% end %>
+              <div class="link text-right">
+          　     <%= link_to "編集", edit_knowledge_path(knowledge.id), class: 'btn btn3' %>
+                <%= link_to "削除", knowledge_path(knowledge.id), method: :delete, class: 'btn btn4' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

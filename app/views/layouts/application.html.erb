@@ -6,11 +6,87 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9711ab84b8.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application.css' %>
+    <%= yield :css %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="border-bottom">
+
+      <nav class="d-flex justify-content-between">
+        <%= image_tag 'Share_Knowledges_title.png', class: 'logo' %>
+        <div class="nav-button">
+        <i class="fa-solid fa-bars hamburger active"></i>
+        <i class="fa-solid fa-xmark cross"></i>
+        </div>
+        <ul class="list-unstyled mb-0 menu">
+          <% if user_signed_in? %>
+          <% if current_user.admin == false %>
+          <li>
+            <%= link_to 'My登録', users_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to '記事投稿', new_knowledge_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to '記事一覧', choose_knowledges_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'Topページ', root_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'カテゴリー一覧', admin_categories_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to '記事一覧', admin_knowledges_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'コメント一覧', admin_comments_path, class: 'nav-link text-dark' %>
+          </li>
+          <% end %>
+          <% else %>
+          <li>
+            <%= link_to '記事一覧', choose_knowledges_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'Topページ', root_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %>
+          </li>
+          <li>
+            <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <main class="">
     <%= yield %>
+    </main>
+    <div class="push"></div>
+    <footer class="border-top border-dark fixed-bottom">
+      <div class="container h-100">
+        <div class="row justify-content-between align-items-center h-100">
+          <div class="col-md-6">
+            <%= image_tag 'title2.png', class: 'title2' %>
+          </div>
+
+          <div class="col-md-5 d-flex align-items-center">
+            <p class="h4 ">Knowleges are everything in life.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
