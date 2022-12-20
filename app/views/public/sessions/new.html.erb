@@ -3,11 +3,11 @@
 <% end %>
 <div class="container-fluid h-100 mx-0 allbox">
   <div class="row justify-content-center align-items-center h-100">
-    <div class="col-md-6 box">
+    <div class="box">
       <h3 class="text-center my-5">ログイン</h3>
-      <%= form_with model: @user, url: session_path(resource_name) do |f| %>
-      <div class="row field justify-content-center mb-4">
-        <div class="col-xl-8 col-md-10 d-flex px-0">
+      <%= form_with model: @user, url: session_path(resource_name), class: 'form' do |f| %>
+      <div class="row field justify-content-center">
+        <div class="col-md-9 d-flex px-0 email-field">
           <%= f.label :email, "メールアドレス：" %>
           <div class="form1 position-relative px-0">
             <i class="fa-solid fa-envelope email"></i>
@@ -17,8 +17,8 @@
         </div>
       </div>
 
-      <div class="row field justify-content-center mb-4">
-        <div class="col-xl-8 col-md-10 d-flex px-0">
+      <div class="row field justify-content-center">
+        <div class="col-md-9 d-flex px-0 password-field">
           <%= f.label :password, "パスワード：" %>
           <div class="form2 position-relative px-0">
             <i class="fa-solid fa-lock password"></i>
@@ -29,11 +29,21 @@
       </div>
 
       <div class="actions text-center mb-4">
-         <%= f.submit "ログイン", class: 'btn btn-success rounded-pill w-25' %>
+         <%= f.submit "ログイン", class: 'btn btn-success rounded-pill btn1' %>
       </div>
       <% end %>
 
       <%= render "public/shared/links" %>
+
+      <div class="row justify-content-center link">
+        <div class="col-md-5 d-flex align-items-center justify-content-end guest-label">
+          <p class="mb-0">ゲストの方→</p>
+        </div>
+        <div class="col-md-5 px-0 guest-link">
+          <%= link_to 'ユーザー', users_user_guest_sign_in_path, method: :post, class: 'btn btn2' %>
+          <%= link_to '管理者', users_admin_guest_sign_in_path, method: :post, class: 'btn btn3' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

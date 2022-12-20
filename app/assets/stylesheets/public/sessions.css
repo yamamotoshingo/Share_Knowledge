@@ -13,7 +13,8 @@
 .box {
   border: solid 1px black;
   background-color: white;
-  min-height: 75%;
+  min-height: 470px;
+  width: 600px;
 }
 
 .form1 {
@@ -38,4 +39,104 @@
 
 #danger1, #danger2 {
   color: red;
+}
+
+.btn1 {
+  width: 25%;
+}
+
+.btn2 {
+  width: 100px;
+  background-color: #FFB6C1;
+  border: solid 1.5px red;
+  border-radius: 5px;
+  margin-right: 12px;
+  padding: 3px 12px;
+}
+
+.btn3 {
+  width: 100px;
+  background-color: #D9E5FF;
+  border: solid 1.5px blue;
+  border-radius: 5px;
+  padding: 3px 12px;
+}
+
+.field {
+  margin: 0px 0px 24px;
+}
+
+.link {
+  margin: 0px 0px 16px;
+}
+
+@media (max-width: 768px) {
+  .field {
+    width: 450px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .label {
+    width: 200px;
+    padding-left: 0px;
+  }
+
+  .link-button {
+    width: 128px;
+  }
+
+  .guest-label, .guest-link {
+    width: auto;
+  }
+}
+
+@media (max-width: 466px) {
+  .email-field, .password-field {
+    flex-direction: column;
+  }
+
+  .form2 {
+    margin-left: 0;
+  }
+
+  .field {
+    width: 350px;
+  }
+}
+
+@media (max-width: 360px) {
+  .field {
+    width: 100%;
+  }
+
+  .form {
+    padding: 0 8px;
+  }
+
+  .btn1 {
+    width: 90px;
+  }
+}
+
+@media (max-width: 343px) {
+  .label {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .link-button {
+    width: 100%;
+  }
+  .label p, .link-button {
+    text-align: center;
+  }
 }

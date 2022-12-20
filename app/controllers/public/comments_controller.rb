@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @comment = Comment.new
     @knowledge = Knowledge.find(params[:knowledge_id])

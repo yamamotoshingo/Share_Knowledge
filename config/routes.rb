@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'public/users/sessions#guest_sign_in'
+    post 'users/user_guest_sign_in', to: 'public/sessions#user_guest_sign_in'
+    post 'users/admin_guest_sign_in', to: 'public/sessions#admin_guest_sign_in'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

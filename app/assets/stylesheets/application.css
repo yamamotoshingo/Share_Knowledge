@@ -19,6 +19,7 @@ main {
 }
 
 footer p {
+  font-size: 24px;
   font-family: "Comic Sans MS";
 }
 
@@ -54,11 +55,18 @@ ul {
   font-size: 2.5em;
 }
 
+@media (max-width: 1074px) {
+  nav {
+    padding: 0px 1rem;
+  }
+}
+
 @media (max-width: 991px) {
 
   nav {
     position: relative;
     align-items: center;
+    padding: 0px 4rem;
   }
 
   .nav-button {
@@ -90,6 +98,16 @@ ul {
     border-top: solid 1px;
   }
 }
+
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 120px;
+  }
+
+  footer {
+    height: 120px;
+  }
+}
 @media (max-width: 571px) {
   .logo {
     width: 90%;
@@ -100,6 +118,18 @@ ul {
   .title2 {
     width: 90%;
     padding: 0 auto;
+  }
+}
+
+@media (max-width: 395px) {
+  footer p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 374px) {
+  .logo {
+    width: 85%;
   }
 }
 

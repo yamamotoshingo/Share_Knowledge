@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :nickname, presence: true
-
+  validates :password_confirmation, presence: true, confirmation: true
   validates_confirmation_of :password_confirmation
 
   has_many :knowledges
@@ -21,9 +21,18 @@ class User < ApplicationRecord
       profile_image
   end
 
-  def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+  def self.user_guest
+    find_or_create_by!(email: 'user_guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.nickname = "ユーザーゲスト"
+    end
+  end
+
+  def self.admin_guest
+    find_or_create_by!(email: 'admin_guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.nickname = "管理者ゲスト"
+      user.admin = true
     end
   end
 end

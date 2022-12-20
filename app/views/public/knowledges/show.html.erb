@@ -5,9 +5,13 @@
   <div class="row justify-content-center py-2 title">
     <div class="col-md-10 pl-3 pr-0 d-flex flex-column justify-content-center">
       <div class="tag mb-1">
-        <span class="mr-2"><%= @knowledge.created_at.strftime('%Y/%m/%d') %></span>
         <span class="classification"><%= @knowledge.classification_i18n %></span>
-        <span class="category"><%= @knowledge.category.name %></span>
+        <span class="category mr-2"><%= @knowledge.category.name %></span>
+        <div class="knowledge-contribute">
+          <span class="mr-2"><%= @knowledge.created_at.strftime('%Y/%m/%d') %></span>
+          <span class="mr-2"><%= image_tag @knowledge.user.get_profile_image, class: 'profile_image1' %></span>
+          <span><%= @knowledge.user.nickname %></span>
+        </div>
       </div>
       <h4 class="mb-0 px-4 font-weight-bold text-center"><%= @knowledge.title %></h4>
     </div>
@@ -42,24 +46,46 @@
     </div>
   </div>
 
-  <div class="row justify-content-center my-2 content">
+  <div class="row justify-content-center my-2 link-button">
+    <% if @index != 0 %>
+    <%= link_to knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
+      <div class="arrow1">前の記事</div>
+    <% end %>
+    <% end %>
+    <%= link_to knowledges_path(categories_id: @search_categories, classification: @knowledge.classification_before_type_cast) do %>
+      <div class="arrow2">一覧画面へ戻る</div>
+    <% end %>
+    <% if @index != (@knowledges.count-1) %>
+    <%= link_to knowledge_path(@knowledges[@index+1], search_categories: @search_categories, index: @index+1) do %>
+    <div class="arrow3">次の記事</div>
+    <% end %>
+    <% end %>
   </div>
 
   <div class="row d-block justify-content-center my-2 px-4 review">
     <div class="pt-3">
       <h5 class="d-inline"><u>＜レビュー・コメント一覧＞</u></h5>
       <p class="comments-number">コメント数：<%= @knowledge.comments.count %>件</p>
-      <%= link_to "コメントする", new_knowledge_comment_path(@knowledge.id), class: 'btn btn-primary' %>
+      <% if user_signed_in? %>
+        <%= link_to "コメントする", new_knowledge_comment_path(@knowledge.id), class: 'btn btn-primary' %>
+      <% end %>
     </div>
     <div class="row mx-0 mt-3 flex-column">
       <% @knowledge.comments.each do |comment| %>
       <div class="col-md-12 comment mb-3 py-1">
-        <div class="contribute d-flex align-items-center">
-          <%= image_tag comment.user.get_profile_image, class: 'profile_image mr-2' %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
-          <span class="star-rating ml-2" data-rate="<%= comment.rate %>">　</span>
+        <div class="contribute">
+          <div class="contribute-detail d-flex align-items-center flex-wrap">
+            <span>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+              <%= image_tag comment.user.get_profile_image, class: 'profile_image2 mx-2' %>
+              <%= comment.user.nickname %>
+            </span>
+            <span class="star-rating" data-rate="<%= comment.rate %>">　</span>
+          </div>
           <% if comment.user == current_user %>
-          <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id), method: :delete, class: 'btn btn-danger' %>
+          <div class="delete-button">
+            <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id), method: :delete, class: 'btn btn-danger' %>
+          </div>
           <% end %>
         </div>
         <%= comment.content %>

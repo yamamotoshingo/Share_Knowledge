@@ -38,15 +38,17 @@
           </span>
         <% end %>
         </div>
-        <%= link_to "記事投稿", new_knowledge_path, class: 'btn btn1 py-1' %>
+        <% if user_signed_in? %>
+          <%= link_to "記事投稿", new_knowledge_path, class: 'btn btn1 py-1' %>
+        <% end %>
       </div>
       <div class="row flex-column article-list px-2 pt-2">
         <div class="col-md-12 mb-3 per d-flex justify-content-between">
           <span><%= page_entries_info @knowledges %></span>
           <%= paginate @knowledges %>
         </div>
-        <% @knowledges.each do |knowledge| %>
-        <%= link_to knowledge_path(knowledge.id), class: 'text-dark' do %>
+        <% @knowledges.each_with_index do |knowledge, i| %>
+        <%= link_to knowledge_path(knowledge.id, search_categories: @knowledges.distinct().pluck(:category_id), index: i), class: 'text-dark' do %>
         <div class="col-md-12 d-flex article px-3 mb-3 py-1">
           <%= image_tag knowledge.get_image, class: 'image1' %>
           <div class="article-content flex-grow-1 ml-3">

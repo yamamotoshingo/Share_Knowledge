@@ -1,4 +1,5 @@
 class Public::KnowledgesController < ApplicationController
+  before_action :authenticate_user!, except: [:choose, :index, :show]
   def choose
   end
 
@@ -20,6 +21,9 @@ class Public::KnowledgesController < ApplicationController
 
   def show
     @knowledge = Knowledge.find(params[:id])
+    @search_categories = params[:search_categories]
+    @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast, category_id: @search_categories)
+    @index = params[:index].to_i
   end
 
   def edit

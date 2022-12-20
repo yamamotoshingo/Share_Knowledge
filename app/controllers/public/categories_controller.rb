@@ -1,4 +1,5 @@
 class Public::CategoriesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @category = Category.new(category_params)
     @knowledge = Knowledge.new
@@ -6,6 +7,7 @@ class Public::CategoriesController < ApplicationController
     @knowledge.content = params[:category][:content]
     @knowledge.classification = params[:category][:classification]
     @category.save
+    @categories = Category.all
     @category = Category.new
     render template: "public/knowledges/new"
   end

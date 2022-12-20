@@ -5,6 +5,7 @@ ja:
         nickname: ニックネーム
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード(確認)
       knowledge:
         title: タイトル
         content: コンテンツ

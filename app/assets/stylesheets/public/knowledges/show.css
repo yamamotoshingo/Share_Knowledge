@@ -72,6 +72,10 @@
   font-size: 18px;
 }
 
+.link-button {
+  font-size: 18px;
+}
+
 .image1 {
   width: 100%;
   min-height: 220px;
@@ -87,9 +91,16 @@
   border: solid 1.5px black;
 }
 
-.profile_image {
-  width: 20px;
-  height: 20px;
+.profile_image1 {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.profile_image2 {
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
 }
 
@@ -97,6 +108,7 @@
   position: relative;
   font-size: 20px;
   margin-right: 100px;
+  margin-left: 8px;
 }
 .star-rating:before, .star-rating:after {
   content: "★★★★★";
@@ -161,6 +173,15 @@
   font-size: 18px;
 }
 
+.knowledge-contribute {
+  display: inline;
+}
+
+.contribute {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1200px) {
   .allbox {
     padding-right: 70px;
@@ -175,7 +196,7 @@
 }
 
 @media (max-width: 1000px) {
-  .title, .content, .link, .review {
+  .title, .content, .link, .link-button, .review {
     width: 95%;
   }
 
@@ -198,9 +219,9 @@
   }
 }
 
-@media (max-width: 768px) {
-  .title, .content, .link, .review {
-    width: 80%;
+@media (max-width: 767.5px) {
+  .title, .content, .link, .link-button, .review {
+    width: 90%;
   }
 
   .avg-review {
@@ -221,7 +242,7 @@
   }
 
   .image1 {
-  width: 60%;
+    width: 364px;
   }
 
   .content {
@@ -238,5 +259,83 @@
     display: block;
     text-align: end;
     margin: 8px 0px 0px 0px;
+  }
+}
+
+.arrow1 {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  background: #3399FF;
+  margin-right: 24px;
+  text-align: center;
+  color: black;
+}
+.arrow1::after {
+  content: "";
+  position: absolute;
+  left: -30px;
+  border-left: 15px solid transparent;
+  border-top: 15px solid transparent;
+  border-right: 15px solid #3399FF;
+  border-bottom: 15px solid transparent;
+}
+
+.arrow2 {
+  background: #3399FF;
+  height: 30px;
+  padding: 0px 8px;
+  border-radius: 5px;
+  color: black;
+}
+
+.arrow3 {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  background: #3399FF;
+  margin-left: 24px;
+  text-align: center;
+  color: black;
+}
+.arrow3::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  border-left: 15px solid #3399FF;
+  border-top: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+@media (max-width: 600px) {
+  .title, .content, .link, .link-button, .review {
+    width: 90%;
+  }
+
+  .contribute {
+    display: block;
+  }
+
+  .delete-button {
+    text-align: end;
+  }
+
+  .star-rating {
+    margin-left: 0px;
+  }
+
+  .knowledge-contribute {
+    display: block;
+    margin-top: 8px;
+  }
+  .tag {
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .image1 {
+    width: 100%;
   }
 }
