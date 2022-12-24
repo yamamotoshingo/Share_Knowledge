@@ -42,19 +42,19 @@
           </li>
           <% else %>
           <li>
-            <%= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link text-dark' %>
+            <%= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link text-dark admin-menu' %>
           </li>
           <li>
-            <%= link_to 'カテゴリー一覧', admin_categories_path, class: 'nav-link text-dark' %>
+            <%= link_to 'カテゴリー一覧', admin_categories_path, class: 'nav-link text-dark admin-menu' %>
           </li>
           <li>
-            <%= link_to '記事一覧', admin_knowledges_path, class: 'nav-link text-dark' %>
+            <%= link_to '記事一覧', admin_knowledges_path, class: 'nav-link text-dark admin-menu' %>
           </li>
           <li>
-            <%= link_to 'コメント一覧', admin_comments_path, class: 'nav-link text-dark' %>
+            <%= link_to 'コメント一覧', admin_comments_path, class: 'nav-link text-dark admin-menu' %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark admin-menu' %>
           </li>
           <% end %>
           <% else %>
@@ -86,7 +86,7 @@
           </div>
 
           <div class="col-md-5 d-flex align-items-center justify-content-center">
-            <p>Knowleges are everything in life.</p>
+            <p>Knowledges are everything in life.</p>
           </div>
         </div>
       </div>

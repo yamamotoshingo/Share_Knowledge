@@ -46,22 +46,30 @@ ul {
 .active {
   display: none;
 }
+
 .hamburger {
   display: none;
   font-size: 2.5em;
 }
+
 .cross {
   display: none;
   font-size: 2.5em;
 }
 
-@media (max-width: 1074px) {
+@media (max-width: 1200px) {
+  .admin-menu {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 1150px) {
   nav {
     padding: 0px 1rem;
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1074px) {
 
   nav {
     position: relative;
@@ -81,13 +89,14 @@ ul {
   ul {
       position: absolute;
       flex-direction: column;
-      display: none;
       border: solid 1px black;
+      display: none;
       background-color: rgba(0, 153, 255, 0.5);
       color: black;
       width: 200px;
       Top: 79px;
       Right: 0px;
+      z-index: 1;
   }
 
   ul .active{

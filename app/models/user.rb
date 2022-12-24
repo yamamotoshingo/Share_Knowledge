@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :nickname, presence: true
+  validates :email, uniqueness: true
+  validates :password, presence: true, uniqueness: true
   validates :password_confirmation, presence: true, confirmation: true
   validates_confirmation_of :password_confirmation
 

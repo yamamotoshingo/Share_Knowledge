@@ -24,4 +24,5 @@ Rails.application.config.assets.precompile += %w(
     public/comments/new.css
     public/top.css
     public/user.css
+    admin/knowledges/index.css
  )
