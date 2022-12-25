@@ -1,2 +1,87 @@
-<h1>Admin::Knowledges#show</h1>
-<p>Find me in app/views/admin/knowledges/show.html.erb</p>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'admin/knowledges/show.css' %>
+<% end %>
+<div class="container-fluid h-100 allbox pt-5 mx-0 d-flex flex-column align-items-center">
+  <div class="row justify-content-center py-2 title">
+    <div class="col-md-10 pl-3 pr-0 d-flex flex-column justify-content-center">
+      <div class="tag mb-1">
+        <span class="classification"><%= @knowledge.classification_i18n %></span>
+        <span class="category mr-2"><%= @knowledge.category.name %></span>
+        <div class="knowledge-contribute">
+          <span class="mr-2"><%= @knowledge.created_at.strftime('%Y/%m/%d') %></span>
+          <span class="mr-2"><%= image_tag @knowledge.user.get_profile_image, class: 'profile_image1' %></span>
+          <span><%= @knowledge.user.nickname %></span>
+        </div>
+      </div>
+      <h4 class="mb-0 px-4 font-weight-bold text-center"><%= @knowledge.title %></h4>
+    </div>
+    <div class="col-md-2 pl-0 pr-3 avg-review">
+      <p class="mb-0 text-center">平均レビュー</p>
+      <div class="average-score">
+        <div class="average-star-rating">
+          <div class="star-rating-front" style="width: <%= @knowledge.avg_rate_percentage %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+        <div class="average-score-display">
+          <%= @knowledge.avg_rate %>/5
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center content">
+    <div class="col-md-4 px-0 text-center">
+      <%= image_tag @knowledge.get_image, class: 'image1'%>
+    </div>
+    <div class="col-md-8 content-main">
+      <%= @knowledge.content %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-3 link">
+    <%= link_to "削除する", admin_knowledge_path(@knowledge.id, search_categories: @search_categories), method: :delete, class: 'btn btn-danger knowledge-delete-button' %>
+  </div>
+
+  <div class="row justify-content-center my-2 link-button">
+    <% if @index != 0 %>
+    <%= link_to admin_knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
+      <div class="arrow1">前の記事</div>
+    <% end %>
+    <% end %>
+    <%= link_to admin_knowledges_path(categories_search: @search_categories) do %>
+      <div class="arrow2">一覧画面へ戻る</div>
+    <% end %>
+    <% if @index != (@knowledges.count-1) %>
+    <%= link_to admin_knowledge_path(@knowledges[@index+1], search_categories: @search_categories, index: @index+1) do %>
+    <div class="arrow3">次の記事</div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="row d-block justify-content-center my-2 px-4 review">
+    <div class="pt-3">
+      <h5 class="d-inline"><u>＜レビュー・コメント一覧＞</u></h5>
+      <p class="comments-number">コメント数：<%= @knowledge.comments.count %>件</p>
+    </div>
+    <div class="row mx-0 mt-3 flex-column">
+      <% @knowledge.comments.each do |comment| %>
+      <div class="col-md-12 comment mb-3 py-1">
+        <div class="contribute">
+          <div class="contribute-detail d-flex align-items-center flex-wrap">
+            <span>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+              <%= image_tag comment.user.get_profile_image, class: 'profile_image2 mx-2' %>
+              <%= comment.user.nickname %>
+            </span>
+            <span class="star-rating" data-rate="<%= comment.rate %>">　</span>
+          </div>
+          <div class="delete-button">
+            <%= link_to "削除する", admin_comment_path(comment.id, knowledge_id: @knowledge.id, search_categories: @search_categories, index: @index), method: :delete, class: 'btn btn-danger' %>
+          </div>
+        </div>
+        <%= comment.content %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

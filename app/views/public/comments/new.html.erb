@@ -34,6 +34,8 @@
       <div class="comment">
       <%= f.label :content, "コメント：", class: 'mb-0 label2' %>
       <%= f.text_area :content, placeholder: "コメント内容", class: "content flex-grow-1 pl-2" %>
+      <%= f.hidden_field :categories_id, multiple: true, :value => @search_categories %>
+      <%= f.hidden_field :index, :value => @index %>
       </div>
       <div class="text-center post">
       <%= f.submit "投稿する", class: 'btn btn-primary btn1 rounded-pill' %>

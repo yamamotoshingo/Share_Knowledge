@@ -5,7 +5,7 @@ class Public::KnowledgesController < ApplicationController
 
   def index
     if params[:search]
-      @knowledges = Knowledge.where("title LIKE ? ",'%' + params[:search] + '%')
+      @knowledges = Knowledge.where("searchtitle LIKE ? ",'%' + params[:search] + '%')
       @knowledges = @knowledges.where(classification: params[:classification].to_i).page(params[:page]).per(10)
       @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
     else
@@ -22,7 +22,11 @@ class Public::KnowledgesController < ApplicationController
   def show
     @knowledge = Knowledge.find(params[:id])
     @search_categories = params[:search_categories]
-    @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast, category_id: @search_categories)
+    if @search_categories == ''
+      @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast)
+    else
+      @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast, category_id: @search_categories)
+    end
     @index = params[:index].to_i
   end
 
@@ -31,6 +35,8 @@ class Public::KnowledgesController < ApplicationController
     @categories = Category.all
     @category = Category.new
     @category = @knowledge.category
+    @search_categories = params[:categoires_id]
+    @index = params[:index].to_i
   end
 
   def new
@@ -55,7 +61,7 @@ class Public::KnowledgesController < ApplicationController
     @knowledge = Knowledge.find(params[:id])
     @knowledge.user_id = current_user.id
     if @knowledge.update(knowledge_params)
-      redirect_to knowledge_path(@knowledge.id)
+      redirect_to knowledge_path(@knowledge.id, search_categories: params[:knowledge][:categories_id], index: params[:knowledge][:index].to_i)
     else
       @categories = Category.all
       @category = Category.new
@@ -67,8 +73,7 @@ class Public::KnowledgesController < ApplicationController
   def destroy
     @knowledge = Knowledge.find(params[:id])
     @knowledge.delete
-
-    redirect_to knowledges_path
+    redirect_to knowledges_path(classification: params[:classification], categories_id: params[:categories_id])
   end
 
   private

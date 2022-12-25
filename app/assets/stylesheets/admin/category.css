@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.allbox {
+  background-color: #FFAD90;
+}
+
+.box {
+  border: solid 2px #FF5F17;
+  background-color: white;
+  min-height: 80%;
+  margin: 36px 0px;
+}
+
+.categories-title {
+  width: 250px;
+  border-bottom: solid 2px green;
+}
+
+.delete-button {
+  width: 150px;
+  background-color: #FFB6C1;
+  border: solid 2px red;
+  border-radius: 30px;
+  padding: 4px 0px;
+  font-size: 18px;
+}

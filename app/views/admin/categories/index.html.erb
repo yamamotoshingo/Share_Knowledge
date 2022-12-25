@@ -1,2 +1,25 @@
-<h1>Admin::Categories#index</h1>
-<p>Find me in app/views/admin/categories/index.html.erb</p>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'admin/category.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-8 col-xl-6 box d-flex flex-column align-items-center">
+      <h3 class="categories-title text-center my-4">カテゴリー一覧</h3>
+      <%= form_with url: admin_categories_path, method: :delete, class: 'categories-search-form' do |f| %>
+        <div class="categories-checkbox d-flex flex-wrap">
+        <%= f.collection_check_boxes :categories, @categories, :id, :name, {include_hidden: false} do |b| %>
+          <div class="col-3 mb-3">
+            <%= b.label class: 'label-checkbox d-flex' do %>
+              <p><%= b.check_box class: 'mr-1' %></p>
+              <p><%= b.text %></p>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+        <div class="button1 text-center mb-3">
+          <%= f.submit "削除する", class: 'btn delete-button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -32,8 +32,8 @@
 
   <div class="row justify-content-end my-2 link">
   <% if @knowledge.user == current_user %>
-  <%= link_to "編集する", edit_knowledge_path(@knowledge.id), class: 'btn btn-success mr-3' %>
-  <%= link_to "削除する", knowledge_path(@knowledge.id), method: :delete, class: 'btn btn-danger mr-3' %>
+  <%= link_to "編集する", edit_knowledge_path(@knowledge.id, categories_id: @search_categories, index: @index), class: 'btn btn-success mr-3' %>
+  <%= link_to "削除する", knowledge_path(@knowledge.id, classification: @knowledge.classification_before_type_cast, categories_id: @search_categories), method: :delete, class: 'btn btn-danger mr-3' %>
   <% end %>
   </div>
 
@@ -47,18 +47,20 @@
   </div>
 
   <div class="row justify-content-center my-2 link-button">
-    <% if @index != 0 %>
-    <%= link_to knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
-      <div class="arrow1">前の記事</div>
-    <% end %>
-    <% end %>
-    <%= link_to knowledges_path(categories_id: @search_categories, classification: @knowledge.classification_before_type_cast) do %>
-      <div class="arrow2">一覧画面へ戻る</div>
-    <% end %>
-    <% if @index != (@knowledges.count-1) %>
-    <%= link_to knowledge_path(@knowledges[@index+1], search_categories: @search_categories, index: @index+1) do %>
-    <div class="arrow3">次の記事</div>
-    <% end %>
+    <% if @search_categories != nil %>
+      <% if @index != 0 %>
+        <%= link_to knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
+          <div class="arrow1">前の記事</div>
+        <% end %>
+      <% end %>
+      <%= link_to knowledges_path(categories_id: @search_categories, classification: @knowledge.classification_before_type_cast) do %>
+        <div class="arrow2">一覧画面へ戻る</div>
+      <% end %>
+      <% if @index != (@knowledges.count-1) %>
+        <%= link_to knowledge_path(@knowledges[@index+1], search_categories: @search_categories, index: @index+1) do %>
+          <div class="arrow3">次の記事</div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
@@ -67,7 +69,7 @@
       <h5 class="d-inline"><u>＜レビュー・コメント一覧＞</u></h5>
       <p class="comments-number">コメント数：<%= @knowledge.comments.count %>件</p>
       <% if user_signed_in? %>
-        <%= link_to "コメントする", new_knowledge_comment_path(@knowledge.id), class: 'btn btn-primary' %>
+        <%= link_to "コメントする", new_knowledge_comment_path(@knowledge.id, categories_id: @search_categories, index: @index), class: 'btn btn-primary' %>
       <% end %>
     </div>
     <div class="row mx-0 mt-3 flex-column">
@@ -84,7 +86,7 @@
           </div>
           <% if comment.user == current_user %>
           <div class="delete-button">
-            <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id, categories_id: @search_categories, index: @index ), method: :delete, class: 'btn btn-danger' %>
           </div>
           <% end %>
         </div>

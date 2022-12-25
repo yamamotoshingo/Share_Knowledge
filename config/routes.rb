@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
     resources :knowledges, only: [:index, :show, :destroy]
-    resources :categories, only: [:index, :destroy]
+    resources :categories, only: [:index]
+    resource :categories, only: [:destroy]
     resources :comments, only: [:index, :destroy]
   end
 
