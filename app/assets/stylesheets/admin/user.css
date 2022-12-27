@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.allbox {
+  background-color: #CCFFCC;
+}
+.box {
+  border: solid 2px #005500;
+  background-color: white;
+  min-height: 80%;
+  margin: 36px 0px;
+  padding: 0px 24px;
+}
+
+.user-title {
+  width: 100%;
+}
+
+h3 {
+  width: 250px;
+  border-bottom: solid 2px green;
+  position: relative;
+  left: calc(50% - 125px);
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.search-form {
+  width: 230px;
+}
+
+.search_image {
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
+  position: absolute;
+  top: 2px;
+  right: 4px;
+}
+
+.profile-image {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+}
+
+.withdrawal {
+  color: #FF0033;
+}
+
+.member {
+  color: #00CC00;
+}
+
+.delete-button {
+  font-size: 18px;
+}
+
+.btn1 {
+  width: 150px;
+}
+
+.email {
+  overflow-wrap: break-word;
+}
+
+.per {
+  font-size: 18px;
+}
+
+.withdrawal-button {
+  width: 100px;
+  height: 35px;
+  background-color: #FFB6C1;
+  border: solid 2px red;
+  padding: 2px 10px;
+  font-size: 18px;
+}
+
+.lift-button {
+  width: 100px;
+  height: 35px;
+  background-color: #99FFCC;
+  border: solid 2px green;
+  padding: 2px 10px;
+  font-size: 18px;
+}
+
+@media (max-width: 650px) {
+  .checkbox-and-profile-image, .nickname, .email, .status {
+    padding: 0px 4px;
+  }
+
+  .box {
+    padding: 0px;
+  }
+}
+
+

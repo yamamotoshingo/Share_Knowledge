@@ -106,5 +106,17 @@ $(function() {
 	}
 });
 
+$(function() {
+  $('.checkbox').on('change', function(){
+    const checkboxes2 = $(".checkbox");
+    const valueArray = [];
 
-
+    checkboxes2.each(function() {
+    if ($(this).prop("checked")) {
+      valueArray.push($(this).val());
+    }
+    });
+    $(".withdrawal").val(valueArray);
+    $(".lift").val(valueArray);
+    })
+});

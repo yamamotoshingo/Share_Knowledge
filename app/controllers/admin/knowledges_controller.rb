@@ -12,6 +12,10 @@ class Admin::KnowledgesController < ApplicationController
         @categories = Category.all
       end
     end
+    if params[:user_knowledges]
+      @knowledges = Knowledge.where(user_id: params[:user_knowledges].to_i).page(params[:page]).per(10)
+      @categories = Category.all
+    end
   end
 
   def show

@@ -1,2 +1,84 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'admin/user.css' %>
+<% end %>
+<div class="container-fluid h-100 mx-0 allbox">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-8 col-xl-6 box d-flex flex-column align-items-center">
+      <div class="user-title my-4 d-flex justify-content-between">
+        <h3 class="text-center">
+          <%= link_to admin_users_path, class: 'text-dark' do %>
+            <i class="fa-solid fa-user mr-1"></i>ユーザー一覧
+          <% end %>
+        </h3>
+        <p class="mb-0 h4">全<%= @users.count %>人</p>
+      </div>
+
+      <div class="col-12 search mb-3">
+        <%= form_with url: admin_users_path, method: :GET, class: 'search-form position-relative' do |f| %>
+          <%= f.text_field :search, placeholder: 'ユーザー検索', class: ' w-100 pl-1' %>
+          <%= image_submit_tag("search_image.png", class: 'search_image') %>
+        <% end %>
+      </div>
+
+      <%= form_with url: admin_user_path, method: :DELETE, class: 'w-100' do |f| %>
+      <% @users.each do |user| %>
+      <div class="row mb-1 mx-0">
+          <%= f.label :user, value: user.id, class: 'label-checkbox d-flex w-100' do %>
+          <div class="col-2 text-right checkbox-and-profile-image">
+            <% if user.admin == true %>
+              <%= image_tag "no_profile_image.png", class: 'profile-image' %>
+            <% else %>
+              <%= f.check_box :user, {multiple: true, include_hidden: false, class: 'checkbox mr-2'}, user.id %>
+              <%= image_tag user.get_profile_image, class: 'profile-image' %>
+            <% end %>
+          </div>
+          <div class="col-3 nickname">
+            <% if user.admin == false %>
+              <%= link_to admin_knowledges_path(user_knowledges: user.id), class: 'text-dark' do %>
+                <%= user.nickname %>
+              <% end %>
+            <% else %>
+                <%= user.nickname %>
+            <% end %>
+          </div>
+          <div class="col-5 email">
+            <%= user.email %>
+          </div>
+          <div class="col-2 text-left status">
+            <% if user.admin == false %>
+            <% if user.is_deleted == true %>
+              <%= link_to lift_admin_user_path(user: user.id), method: :patch do %>
+                <span class="withdrawal font-weight-bold">退会</span>
+              <% end %>
+            <% else %>
+              <%= link_to withdrawal_admin_user_path(user: user.id), method: :patch do %>
+                <span class="member font-weight-bold">会員</span>
+              <% end %>
+            <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+      <div class="delete-button text-center my-3">
+        <%= f.submit "削除する", class: 'btn btn-danger rounded-pill btn1' %>
+      </div>
+      <% end %>
+      <div class="status d-flex justify-content-end w-100 mb-2">
+      <%= form_with url: "/admin/user/withdrawal", method: :PATCH, class: 'mr-2' do |f| %>
+        <%= f.hidden_field :alluser, class: 'withdrawal' %>
+        <%= f.submit "退会", class: 'btn withdrawal-button' %>
+      <% end %>
+       <%= form_with url: "/admin/user/lift", method: :PATCH do |f| %>
+        <%= f.hidden_field :alluser, class: 'lift' %>
+        <%= f.submit "解除", class: 'btn lift-button' %>
+      <% end %>
+      </div>
+      <div class="col-md-12 mb-3 per d-flex justify-content-center">
+        <span class="mr-4"><%= page_entries_info @users %></span>
+        <%= paginate @users %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
