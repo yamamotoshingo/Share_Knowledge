@@ -26,7 +26,7 @@ Rails.application.config.assets.precompile += %w(
     public/user.css
     admin/knowledges/index.css
     admin/knowledges/show.css
-    admin/category.css
-    admin/user.css
-    admin/comment.css
+    admin/categories.css
+    admin/users.css
+    admin/comments.css
  )

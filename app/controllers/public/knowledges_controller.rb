@@ -5,15 +5,15 @@ class Public::KnowledgesController < ApplicationController
 
   def index
     if params[:search]
-      @knowledges = Knowledge.where("searchtitle LIKE ? ",'%' + params[:search] + '%')
+      @knowledges = Knowledge.where("title LIKE ?  OR content LIKE ?", '%' + params[:search] + '%', '%' + params[:search] + '%')
       @knowledges = @knowledges.where(classification: params[:classification].to_i).page(params[:page]).per(10)
       @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
     else
-      if params[:categories_id]
-        @knowledges = Knowledge.where(classification: params[:classification_number].to_i, category_id: params[:categories_id]).page(params[:page]).per(10)
+      if params[:categories_id] && params[:categories_id] != "0"
+        @knowledges = Knowledge.where(classification: params[:classification].to_i, category_id: params[:categories_id]).page(params[:page]).per(10)
         @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
       else
-        @knowledges = Knowledge.where(classification: params[:classification].to_i).page(params[:page]).per(10)
+        @knowledges = Knowledge.where(classification: params[:classification].to_i).page(params[:page]).per(4)
         @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
       end
     end
@@ -21,8 +21,12 @@ class Public::KnowledgesController < ApplicationController
 
   def show
     @knowledge = Knowledge.find(params[:id])
-    @search_categories = params[:search_categories]
-    if @search_categories == ''
+    if params[:search_categories] == "0"
+      @search_categories = params[:search_categories].to_i
+    else
+      @search_categories = params[:search_categories]
+    end
+    if @search_categories == 0
       @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast)
     else
       @knowledges = Knowledge.where(classification: @knowledge.classification_before_type_cast, category_id: @search_categories)
@@ -35,7 +39,7 @@ class Public::KnowledgesController < ApplicationController
     @categories = Category.all
     @category = Category.new
     @category = @knowledge.category
-    @search_categories = params[:categoires_id]
+    @search_categories = params[:categories_id]
     @index = params[:index].to_i
   end
 
@@ -49,7 +53,9 @@ class Public::KnowledgesController < ApplicationController
     @knowledge = Knowledge.new(knowledge_params)
     @knowledge.user_id = current_user.id
     if @knowledge.save
-      redirect_to knowledge_path(@knowledge.id)
+      @classification_num = Knowledge.where(classification: @knowledge.classification_before_type_cast).count
+      @index = @classification_num - 1
+      redirect_to knowledge_path(@knowledge.id, search_categories: 0, index: @index)
     else
       @categories = Category.all
       render :new
@@ -61,7 +67,7 @@ class Public::KnowledgesController < ApplicationController
     @knowledge = Knowledge.find(params[:id])
     @knowledge.user_id = current_user.id
     if @knowledge.update(knowledge_params)
-      redirect_to knowledge_path(@knowledge.id, search_categories: params[:knowledge][:categories_id], index: params[:knowledge][:index].to_i)
+      redirect_to knowledge_path(@knowledge.id, search_categories: params[:knowledge][:search_categories_id], index: params[:knowledge][:index].to_i)
     else
       @categories = Category.all
       @category = Category.new

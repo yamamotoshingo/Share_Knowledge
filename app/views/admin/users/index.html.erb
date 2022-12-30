@@ -1,5 +1,5 @@
 <% content_for :css do %>
-    <%= stylesheet_link_tag 'admin/user.css' %>
+    <%= stylesheet_link_tag 'admin/users.css' %>
 <% end %>
 <div class="container-fluid h-100 mx-0 allbox">
   <div class="row justify-content-center align-items-center h-100">
@@ -22,11 +22,11 @@
 
       <%= form_with url: admin_user_path, method: :DELETE, class: 'w-100' do |f| %>
       <% @users.each do |user| %>
-      <div class="row mb-1 mx-0">
+      <div class="row mb-1 mx-0 user-list">
           <%= f.label :user, value: user.id, class: 'label-checkbox d-flex w-100' do %>
           <div class="col-2 text-right checkbox-and-profile-image">
             <% if user.admin == true %>
-              <%= image_tag "no_profile_image.png", class: 'profile-image' %>
+              <%= image_tag user.get_profile_image, class: 'profile-image' %>
             <% else %>
               <%= f.check_box :user, {multiple: true, include_hidden: false, class: 'checkbox mr-2'}, user.id %>
               <%= image_tag user.get_profile_image, class: 'profile-image' %>

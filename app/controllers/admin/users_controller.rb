@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if params[:search]
       @users = User.where("nickname LIKE ?",'%' + params[:search] + '%').page(params[:page]).per(10)

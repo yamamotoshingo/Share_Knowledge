@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :knowledges, only: [:index, :show, :destroy]
     resources :categories, only: [:index]
     resource :categories, only: [:destroy]
-    resources :comments, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy] do
+      delete :destroy_all, on: :collection
+    end
   end
 
   scope module: :public do

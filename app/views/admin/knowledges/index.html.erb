@@ -59,7 +59,8 @@
               <p class="mb-0"><%= knowledge.user.nickname %></p>
             </div>
             <div class="link flex-grow-1 text-right">
-            <%= link_to "削除", admin_knowledge_path(knowledge.id), method: :delete, class: 'btn delete-button' %>
+            <% search_categories_id = @knowledges.distinct().pluck(:category_id) %>
+            <%= link_to "削除", admin_knowledge_path(knowledge.id, search_categories: search_categories_id), method: :delete, class: 'btn delete-button' %>
             </div>
           </div>
         </div>

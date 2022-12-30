@@ -1,4 +1,6 @@
 class Admin::KnowledgesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if params[:search]
       @knowledges = Knowledge.where("title LIKE ? OR content LIKE ?",'%' + params[:search] + '%', '%' + params[:search] + '%').page(params[:page]).per(10)
@@ -29,6 +31,6 @@ class Admin::KnowledgesController < ApplicationController
     @knowledge = Knowledge.find(params[:id])
     @knowledge.delete
     @search_categories = params[:search_categories]
-    redirect_to knowledges_path(categories_search: @search_categories)
+    redirect_to admin_knowledges_path(categories_search: @search_categories)
   end
 end

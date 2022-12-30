@@ -108,6 +108,24 @@ ul {
   }
 }
 
+.per {
+  font-size: 18px;
+}
+
+.pagination span {
+  width: 24px;
+  border: solid 1px black;
+  text-align: center;
+}
+
+.pagination span:hover {
+  background-color: #99CCFF;
+}
+
+.pagination a {
+  color: black;
+}
+
 @media (max-width: 768px) {
   main {
     padding-bottom: 120px;

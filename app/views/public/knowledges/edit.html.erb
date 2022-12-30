@@ -37,7 +37,7 @@
         <div class="col-md-4 pl-5 pr-0">
           <%= f.label :category_id, "＜カテゴリー＞", class: 'mb-1' %><br />
           <%= f.select :category_id, @categories.map { |category| [category.name, category.id] }, {prompt: "--選択してください--"} %>
-          <%= f.hidden_field :categoires_id, :value => @search_categories %>
+          <%= f.hidden_field :search_categories_id, :value => @search_categories %>
           <%= f.hidden_field :index, :value => @index %>
         </div>
         <div class="col-md-8 pl-0 pr-5"></div>

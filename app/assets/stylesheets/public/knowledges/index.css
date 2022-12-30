@@ -16,6 +16,10 @@
   border: solid 1px black;
 }
 
+.article:hover {
+  background-color: #99CCFF;
+}
+
 .classification-name {
   line-height: 38px;
   border-bottom: solid 1px black;
@@ -100,10 +104,6 @@
   background-color: #BAD3FF;
   border: solid 2px #136FFF;
   border-radius: 5px;
-}
-
-.per {
-  font-size: 18px;
 }
 
 @media (max-width: 847px) {

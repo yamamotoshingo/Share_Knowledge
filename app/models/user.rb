@@ -8,9 +8,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, uniqueness: true
-  validates :encrypted_password, presence: true, uniqueness: true
-  validates :password_confirmation, presence: true, confirmation: true
-  validates_confirmation_of :password_confirmation
+
 
   has_many :knowledges
   has_many :comments, dependent: :destroy

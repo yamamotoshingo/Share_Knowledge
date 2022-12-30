@@ -80,6 +80,10 @@ label {
   border: solid 1px black;
 }
 
+.article:hover {
+  background-color: #99CCFF;
+}
+
 .article-detail {
   flex-wrap: wrap;
   padding-left: 16px;

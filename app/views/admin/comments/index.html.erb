@@ -1,2 +1,41 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'admin/comments.css' %>
+<% end %>
+<div class="container-fluid allbox">
+  <div class="row title mx-0">
+    <h3>コメント一覧画面</h3>
+    <div class="search d-flex align-items-end">
+      <%= form_with url: admin_comments_path, method: :GET, class: 'search-form d-inline-block position-relative' do |f| %>
+        <%= f.text_field :search, placeholder: "ユーザー/記事検索", class: 'w-100 pl-1' %>
+        <%= image_submit_tag("search_image.png", class: 'search_image') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row comments-list">
+    <%= form_with url: destroy_all_admin_comments_path, method: :delete, class: 'd-flex flex-wrap w-100' do |f| %>
+    <div class="delete-button text-center my-4 w-100">
+      <%= f.submit "一括削除", class: 'btn delete-all-button' %>
+    </div>
+    <% @comments.each do |comment| %>
+      <%= f.label :comment, value: comment.id, class: 'comment-label mb-3' do %>
+      <div class="comment">
+        <div class="comment-user d-flex align-items-center flex-wrap">
+          <%= f.check_box :comment, {multiple: true, include_hidden: false, class: 'checkbox mr-2'}, comment.id %>
+          <div class="user d-flex align-items-center mr-2">
+            <%= image_tag comment.user.get_profile_image, class: 'profile-image mr-2' %>
+            <p class="mb-0"><%= comment.user.nickname %></p>
+          </div>
+          <p class="mb-0"><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+        <p class="mb-0"><%= comment.content %></p>
+      </div>
+      <% end %>
+    <% end %>
+    <% end %>
+    <div class="pagination text-center mt-3 w-100 per d-flex justify-content-center">
+      <span class="mr-4"><%= page_entries_info @comments %></span>
+      <%= paginate @comments %>
+    </div>
+  </div>
+</div>

@@ -42,12 +42,11 @@
       <%= image_tag @knowledge.get_image, class: 'image1'%>
     </div>
     <div class="col-md-8 content-main">
-      <%= @knowledge.content %>
+      <%= safe_join(@knowledge.content.split("\n"),tag(:br)) %>
     </div>
   </div>
 
   <div class="row justify-content-center my-2 link-button">
-    <% if @search_categories != nil %>
       <% if @index != 0 %>
         <%= link_to knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
           <div class="arrow1">前の記事</div>
@@ -61,7 +60,6 @@
           <div class="arrow3">次の記事</div>
         <% end %>
       <% end %>
-    <% end %>
   </div>
 
   <div class="row d-block justify-content-center my-2 px-4 review">
@@ -90,7 +88,11 @@
           </div>
           <% end %>
         </div>
-        <%= comment.content %>
+        <% if comment.content.nil? %>
+          <%= comment.content %>
+        <% else %>
+          <%= safe_join(comment.content.split("\n"),tag(:br)) %>
+        <% end %>
       </div>
       <% end %>
     </div>

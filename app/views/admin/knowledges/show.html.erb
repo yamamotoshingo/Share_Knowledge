@@ -34,7 +34,7 @@
       <%= image_tag @knowledge.get_image, class: 'image1'%>
     </div>
     <div class="col-md-8 content-main">
-      <%= @knowledge.content %>
+      <%= safe_join(@knowledge.content.split("\n"),tag(:br)) %>
     </div>
   </div>
 
@@ -79,7 +79,11 @@
             <%= link_to "削除する", admin_comment_path(comment.id, knowledge_id: @knowledge.id, search_categories: @search_categories, index: @index), method: :delete, class: 'btn btn-danger' %>
           </div>
         </div>
-        <%= comment.content %>
+        <% if comment.content.nil? %>
+          <%= comment.content %>
+        <% else %>
+          <%= safe_join(comment.content.split("\n"),tag(:br)) %>
+        <% end %>
       </div>
       <% end %>
     </div>

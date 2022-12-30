@@ -62,7 +62,7 @@ class Public::SessionsController < Devise::SessionsController
 
   def user_deleted_state
   @user = User.find_by(email: params[:user][:email])
-  return if !@user && @user.admin?
+  return if !@user || @user.admin
   if @user.valid_password?(params[:user][:password]) && @user.is_deleted
     redirect_to new_user_registration_path
   end
