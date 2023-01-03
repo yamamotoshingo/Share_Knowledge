@@ -28,10 +28,9 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-  devise_for :users, controllers: {
+  devise_for :users, skip: [:password], controllers: {
     registrations: "public/registrations",
-    sessions: "public/sessions",
-    passwords: "public/passwords"
+    sessions: "public/sessions"
   }
 
   devise_scope :user do

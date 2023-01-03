@@ -31,16 +31,42 @@
   margin-bottom: 16px;
 }
 
+.image2 {
+  animation-name:UpDown;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-direction: alternate;
+}
+
+@keyframes UpDown{
+  0%{
+  transform: translateY(0);
+  }
+  100%{
+  transform: translateY(15px);
+  }
+}
+
 .btn1 {
   background-color: #CBFFD3;
   border: solid 2px #339933;
   width: 50%;
 }
 
+
+.btn1:hover {
+  background-color: #339933;
+}
+
 .btn2 {
   background-color: #DCC2FF;
   border: solid 2px #9900FF;
   width: 50%;
+}
+
+.btn2:hover {
+  background-color: #9900FF;
 }
 
 p {
