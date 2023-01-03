@@ -47,7 +47,7 @@
   </div>
 
   <div class="row justify-content-center my-2 link-button">
-      <% if @index != 0 %>
+      <% if @index != 0 && @index != -1 %>
         <%= link_to knowledge_path(@knowledges[@index-1], search_categories: @search_categories, index: @index-1) do %>
           <div class="arrow1">前の記事</div>
         <% end %>

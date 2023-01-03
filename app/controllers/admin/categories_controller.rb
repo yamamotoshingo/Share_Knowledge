@@ -7,7 +7,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @categories = Category.where(id: params[:categories])
-    @categories.delete_all
+    @categories.destroy_all
     redirect_to admin_categories_path
   end
 end

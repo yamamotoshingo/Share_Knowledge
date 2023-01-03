@@ -51,6 +51,10 @@ h3 {
   border: solid 1px black;
 }
 
+.comment-label:hover {
+  background-color: #99CCFF;
+}
+
 .comment-label:nth-of-type(2n+1) {
   margin-right: 2%;
 }

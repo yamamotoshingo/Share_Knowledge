@@ -7,10 +7,11 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :nickname, presence: true
-  validates :email, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
 
-  has_many :knowledges
+  has_many :knowledges, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   def get_profile_image

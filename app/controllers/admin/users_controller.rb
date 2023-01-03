@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @users = User.where(id: params[:user])
-    @users.delete_all
+    @users.destroy_all
     redirect_to admin_users_path
   end
 

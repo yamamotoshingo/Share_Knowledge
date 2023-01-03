@@ -41,7 +41,7 @@
           <span><%= paginate @knowledges %>　</span>
         </div>
         <% @knowledges.each do |knowledge| %>
-        <%= link_to knowledge_path(knowledge.id), class: 'text-dark' do %>
+        <%= link_to knowledge_path(knowledge.id, index: -1, search_categories: 0), class: 'text-dark' do %>
         <div class="col-md-12 d-flex flex-column article px-3 mb-3 py-1">
           <h5 class="font-weight-bold"><%= knowledge.title %></h5>
           <div class="article-content d-flex">

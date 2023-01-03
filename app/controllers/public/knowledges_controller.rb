@@ -13,7 +13,7 @@ class Public::KnowledgesController < ApplicationController
         @knowledges = Knowledge.where(classification: params[:classification].to_i, category_id: params[:categories_id]).page(params[:page]).per(10)
         @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
       else
-        @knowledges = Knowledge.where(classification: params[:classification].to_i).page(params[:page]).per(4)
+        @knowledges = Knowledge.where(classification: params[:classification].to_i).page(params[:page]).per(10)
         @knowledges_classification = Knowledge.where(classification: params[:classification].to_i)
       end
     end
@@ -78,7 +78,7 @@ class Public::KnowledgesController < ApplicationController
 
   def destroy
     @knowledge = Knowledge.find(params[:id])
-    @knowledge.delete
+    @knowledge.destroy
     redirect_to knowledges_path(classification: params[:classification], categories_id: params[:categories_id])
   end
 

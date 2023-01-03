@@ -29,7 +29,7 @@ class Admin::KnowledgesController < ApplicationController
 
   def destroy
     @knowledge = Knowledge.find(params[:id])
-    @knowledge.delete
+    @knowledge.destroy
     @search_categories = params[:search_categories]
     redirect_to admin_knowledges_path(categories_search: @search_categories)
   end

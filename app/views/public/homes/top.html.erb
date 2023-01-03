@@ -25,7 +25,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to knowledge_path(knowledge.id, search_categoires: ''), class: 'text-dark font-weight-bold knowledge-title' do %>
+              <%= link_to knowledge_path(knowledge.id, index: -1, search_categories: 0), class: 'text-dark font-weight-bold knowledge-title' do %>
               <%= knowledge.title %>
               <% end %>
               <div class="classification-and-category">

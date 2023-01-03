@@ -36,14 +36,17 @@
 
 - アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1diVxKkowwWWm6kiCp_5jJXeFN1CI4cIbznMMmKetiGw/edit?usp=sharing
 
+- テスト仕様書：https://docs.google.com/spreadsheets/d/1aO1IM9dyCwi37-yiuhU9Zw6l57ko0oRH/edit?usp=sharing&ouid=106589473745383425550&rtpof=true&sd=true
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
 - O-DAN FREE PHOTO：https://unsplash.com/ja/%E5%86%99%E7%9C%9F/LkFme_lYghs
+- O-DAN FREE PHOTO：https://unsplash.com/ja/%E5%86%99%E7%9C%9F/OdBFUurPHjo
 - イラストAC：https://www.ac-illust.com/main/detail.php?id=23166220&word=%E9%9B%BB%E7%90%83%E3%82%92%E6%8E%B2%E3%81%92%E3%82%8B%E4%BA%BA
+- Canva

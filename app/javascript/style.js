@@ -114,6 +114,11 @@ $(function() {
     checkboxes2.each(function() {
     if ($(this).prop("checked")) {
       valueArray.push($(this).val());
+      $(this).closest(".user-list").css("backgroundColor", "#99CCFF");
+      $(this).closest(".comment-label").css("backgroundColor", "#99CCFF");
+    } else {
+      $(this).closest(".user-list").css("backgroundColor", "white");
+      $(this).closest(".comment-label").css("backgroundColor", "white");
     }
     });
     $(".withdrawal").val(valueArray);
