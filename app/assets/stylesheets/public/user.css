@@ -8,9 +8,14 @@
   margin: 0px 24px;
 }
 
-.profile-information {
-  border: solid 1px black;
+.profile-information-outline {
   margin-right: 24px;
+}
+
+.profile-information-inline {
+  border: solid 1px black;
+  padding: 0px 12px;
+  width: 100%;
 }
 
 .profile-image {
@@ -159,8 +164,7 @@ label {
     margin: 0px 24px;
   }
 
-  .profile-information {
-    border: solid 1px black;
+  .profile-information-outline {
     margin-right: 0px;
     margin-bottom: 24px;
     width: 350px;

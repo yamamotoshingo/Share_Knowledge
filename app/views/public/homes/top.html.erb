@@ -47,11 +47,10 @@
           </tr>
         <% end %>
         <% if @knowledges.count < 10 %>
-          <% for i in (@knowledges.count+1)..9 %>
+          <% for i in (@knowledges.count)..9 %>
             <tr>
             <td class="text-center">
-              <% if i <= 3 %>
-                <% i = i - 1 %>
+              <% if i <= 2 %>
                 <%= image_tag image[i], class: 'ranking-image' %>
               <% else %>
                 <h5><%= i + 1 %></h5>

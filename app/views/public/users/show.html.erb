@@ -3,7 +3,8 @@
 <% end %>
 <div class="container-fluid h-100 allbox pt-4 px-0">
   <div class="row justify-content-center px-0 subbox">
-    <div class="col-xl-3 col-md-4 profile-information">
+    <div class="col-xl-3 col-md-4 profile-information-outline px-0">
+      <div class="profile-information-inline">
       <div class="text-center my-3">
         <%= image_tag @user.get_profile_image, class: 'profile-image' %>
       </div>
@@ -32,6 +33,7 @@
           <%= link_to "退会", withdrawal_users_path, data: { confirm: "本当に退会しますか？"}, method: :PATCH, class: 'btn btn2' %>
         </div>
       <% end %>
+      </div>
     </div>
     <div class="col-xl-8 col-md-7 my-article-list">
       <div class="row flex-column article-list px-2 pt-3">
