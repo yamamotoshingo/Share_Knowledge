@@ -36,11 +36,15 @@ class Public::KnowledgesController < ApplicationController
 
   def edit
     @knowledge = Knowledge.find(params[:id])
-    @categories = Category.all
-    @category = Category.new
-    @category = @knowledge.category
-    @search_categories = params[:categories_id]
-    @index = params[:index].to_i
+    if @knowledge.user_id == current_user.id
+      @categories = Category.all
+      @category = Category.new
+      @category = @knowledge.category
+      @search_categories = params[:categories_id]
+      @index = params[:index].to_i
+    else
+      redirect_to knowledge_path(@knowledge.id, search_categories: 0, index: -1)
+    end
   end
 
   def new

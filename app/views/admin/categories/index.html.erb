@@ -17,7 +17,7 @@
         <% end %>
         </div>
         <div class="button1 text-center mb-3">
-          <%= f.submit "削除する", class: 'btn delete-button' %>
+          <%= f.submit "削除する", data: { confirm: "本当に削除しますか？"}, class: 'btn delete-button' %>
         </div>
       <% end %>
     </div>

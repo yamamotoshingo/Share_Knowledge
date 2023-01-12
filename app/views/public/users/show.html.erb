@@ -65,8 +65,8 @@
               </div>
               <% end %>
               <div class="link text-right">
-          　     <%= link_to "編集", edit_knowledge_path(knowledge.id), class: 'btn btn3' %>
-                <%= link_to "削除", knowledge_path(knowledge.id), method: :delete, class: 'btn btn4' %>
+                <%= link_to "編集", edit_knowledge_path(knowledge.id, index: -1, categories_id: 0), class: 'btn btn3' %>
+                <%= link_to "削除", knowledge_path(knowledge.id, classification: knowledge.classification_before_type_cast, categories_id: 0), data: { confirm: "本当に削除しますか？"}, method: :delete, class: 'btn btn4' %>
               </div>
             </div>
           </div>

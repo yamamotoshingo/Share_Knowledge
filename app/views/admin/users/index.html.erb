@@ -61,7 +61,7 @@
       </div>
       <% end %>
       <div class="delete-button text-center my-3">
-        <%= f.submit "削除する", class: 'btn btn-danger rounded-pill btn1' %>
+        <%= f.submit "削除する", data: { confirm: "本当に削除しますか？"}, class: 'btn btn-danger rounded-pill btn1' %>
       </div>
       <% end %>
       <div class="status d-flex justify-content-end w-100 mb-2">

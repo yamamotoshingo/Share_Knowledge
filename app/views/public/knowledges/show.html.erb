@@ -33,7 +33,7 @@
   <div class="row justify-content-end my-2 link">
   <% if @knowledge.user == current_user %>
   <%= link_to "編集する", edit_knowledge_path(@knowledge.id, categories_id: @search_categories, index: @index), class: 'btn btn-success mr-3' %>
-  <%= link_to "削除する", knowledge_path(@knowledge.id, classification: @knowledge.classification_before_type_cast, categories_id: @search_categories), method: :delete, class: 'btn btn-danger mr-3' %>
+  <%= link_to "削除する", knowledge_path(@knowledge.id, classification: @knowledge.classification_before_type_cast, categories_id: @search_categories), data: { confirm: "本当に削除しますか？"}, method: :delete, class: 'btn btn-danger mr-3' %>
   <% end %>
   </div>
 
@@ -84,7 +84,7 @@
           </div>
           <% if comment.user == current_user %>
           <div class="delete-button">
-            <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id, categories_id: @search_categories, index: @index ), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to "削除する", knowledge_comment_path(@knowledge.id, comment.id, categories_id: @search_categories, index: @index ), data: { confirm: "本当に削除しますか？"}, method: :delete, class: 'btn btn-danger' %>
           </div>
           <% end %>
         </div>

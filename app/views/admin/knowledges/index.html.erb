@@ -60,7 +60,7 @@
             </div>
             <div class="link flex-grow-1 text-right">
             <% search_categories_id = @knowledges.distinct().pluck(:category_id) %>
-            <%= link_to "削除", admin_knowledge_path(knowledge.id, search_categories: search_categories_id), method: :delete, class: 'btn delete-button' %>
+            <%= link_to "削除", admin_knowledge_path(knowledge.id, search_categories: search_categories_id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: 'btn delete-button' %>
             </div>
           </div>
         </div>

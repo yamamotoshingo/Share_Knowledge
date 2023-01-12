@@ -12,8 +12,11 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.knowledge_id = params[:knowledge_id].to_i
     if @comment.save
-      redirect_to knowledge_path(@comment.knowledge_id, search_categories: params[:comment][:categories_id], index: params[:comment][:index].to_i )
+      redirect_to knowledge_path(@comment.knowledge_id, search_categories: params[:comment][:categories_id].split(" "), index: params[:comment][:index].to_i )
     else
+      @knowledge = Knowledge.find(params[:knowledge_id].to_i)
+      @search_categories = params[:comment][:categories_id]
+      @index = params[:comment][:index].to_i
       render :new
     end
   end

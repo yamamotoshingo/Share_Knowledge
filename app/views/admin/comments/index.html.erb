@@ -15,7 +15,7 @@
   <div class="row comments-list">
     <%= form_with url: destroy_all_admin_comments_path, method: :delete, class: 'd-flex flex-wrap w-100' do |f| %>
     <div class="delete-button text-center my-4 w-100">
-      <%= f.submit "一括削除", class: 'btn delete-all-button' %>
+      <%= f.submit "一括削除", data: { confirm: "本当に削除しますか？"}, class: 'btn delete-all-button' %>
     </div>
     <% @comments.each do |comment| %>
       <%= f.label :comment, value: comment.id, class: 'comment-label mb-3' do %>

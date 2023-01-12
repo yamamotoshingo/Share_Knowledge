@@ -39,7 +39,7 @@
   </div>
 
   <div class="row justify-content-center my-3 link">
-    <%= link_to "削除する", admin_knowledge_path(@knowledge.id, search_categories: @search_categories), method: :delete, class: 'btn btn-danger knowledge-delete-button' %>
+    <%= link_to "削除する", admin_knowledge_path(@knowledge.id, search_categories: @search_categories), method: :delete, data: { confirm: "本当に削除しますか？"}, class: 'btn btn-danger knowledge-delete-button' %>
   </div>
 
   <div class="row justify-content-center my-2 link-button">
@@ -76,7 +76,7 @@
             <span class="star-rating" data-rate="<%= comment.rate %>">　</span>
           </div>
           <div class="delete-button">
-            <%= link_to "削除する", admin_comment_path(comment.id, knowledge_id: @knowledge.id, search_categories: @search_categories, index: @index), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to "削除する", admin_comment_path(comment.id, knowledge_id: @knowledge.id, search_categories: @search_categories, index: @index), method: :delete, data: { confirm: "本当に削除しますか？"}, class: 'btn btn-danger' %>
           </div>
         </div>
         <% if comment.content.nil? %>
