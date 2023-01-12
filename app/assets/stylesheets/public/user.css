@@ -79,6 +79,7 @@ label {
 .image1 {
   width: 100px;
   height: 80px;
+  object-fit: cover;
 }
 
 .article-list, .article {

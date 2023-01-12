@@ -33,6 +33,7 @@
 .image1 {
   width: 100px;
   height: 80px;
+  object-fit: contain;
 }
 
 .image2 {

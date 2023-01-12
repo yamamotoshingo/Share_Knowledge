@@ -80,6 +80,7 @@
   width: 100%;
   min-height: 220px;
   max-height: 250px;
+  object-fit: contain;
 }
 
 .review {
