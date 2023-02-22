@@ -91,7 +91,7 @@ ul {
       flex-direction: column;
       border: solid 1px black;
       display: none;
-      background-color: rgba(0, 153, 255, 0.5);
+      background-color: rgba(0, 153, 255, 0.9);
       color: black;
       width: 200px;
       Top: 79px;
