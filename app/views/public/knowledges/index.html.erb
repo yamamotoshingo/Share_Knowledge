@@ -13,7 +13,7 @@
       <% end %>
       <div class="categories d-flex flex-column px-2 pt-2">
         <h5 class="categories-title mb-2">カテゴリー一覧</h5>
-        <%= form_with url: knowledges_path, method: :GET, class: 'categories-search' do |f| %>
+        <%= form_with url: knowledges_path, method: :GET, class: 'categories-search flex-wrap' do |f| %>
         <% @knowledges_classification.distinct().pluck(:category_id).each do |category_id| %>
         <div class="item">
         <%= f.check_box :categories_id, {multiple: true, include_hidden: false}, category_id.to_i %>

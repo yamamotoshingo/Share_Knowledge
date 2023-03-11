@@ -23,6 +23,7 @@
   width: 75%;
   height: 40%;
   margin-bottom: 24px;
+  margin-top: 20px;
 }
 
 .image2 {
@@ -44,7 +45,7 @@
   transform: translateY(0);
   }
   100%{
-  transform: translateY(15px);
+  transform: translateY(10px);
   }
 }
 
@@ -52,6 +53,7 @@
   background-color: #CBFFD3;
   border: solid 2px #339933;
   width: 50%;
+  margin-bottom: 20px;
 }
 
 
@@ -63,6 +65,7 @@
   background-color: #DCC2FF;
   border: solid 2px #9900FF;
   width: 50%;
+  margin-bottom: 20px;
 }
 
 .btn2:hover {
@@ -80,7 +83,7 @@ p {
   }
 
   .image2 {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     width: 140px;
     height: 50px;
   }
@@ -118,7 +121,7 @@ p {
   }
 
 .btn1, .btn2 {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   width: 40%;
 }
   .subbox {

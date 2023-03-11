@@ -16,7 +16,7 @@
       <%= form_with url: admin_knowledges_path, method: :GET, class: 'categories-search-form' do |f| %>
         <div class="categories-checkbox d-flex flex-wrap">
         <%= f.collection_check_boxes :categories_search, @categories, :id, :name, {include_hidden: false} do |b| %>
-          <div class="col-2 px-2 mb-3">
+          <div class="col-2 px-2 mb-3 d-flex">
             <%= b.label class: 'label-checkbox d-flex' do %>
               <p><%= b.check_box class: 'mr-1'%></p>
               <p><%= b.text %></p>
