@@ -20,6 +20,10 @@
   background-color: #99CCFF;
 }
 
+.article {
+  display: flex;
+}
+
 .classification-name {
   line-height: 38px;
   border-bottom: solid 1px black;
@@ -136,5 +140,19 @@
   }
   .search-button1 {
     width: 60px;
+  }
+  .text-dark {
+    display: inline-block;
+    width: 100%;
+  }
+  .average-score {
+    flex-wrap: wrap;
+  }
+  .article {
+    display: block;
+  }
+  .image1 {
+    width: 100%;
+    height: 160px;
   }
 }

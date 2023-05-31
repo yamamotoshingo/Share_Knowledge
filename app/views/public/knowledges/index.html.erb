@@ -49,7 +49,7 @@
         </div>
         <% @knowledges.each_with_index do |knowledge, i| %>
         <%= link_to knowledge_path(knowledge.id, search_categories: @knowledges.distinct().pluck(:category_id), index: i), class: 'text-dark' do %>
-        <div class="col-md-12 d-flex article px-3 mb-3 py-1">
+        <div class="col-md-12 article px-3 mb-3 py-1">
           <%= image_tag knowledge.get_image, class: 'image1' %>
           <div class="article-content flex-grow-1 ml-3">
             <h5 class="font-weight-bold"><%= knowledge.title %></h5>
