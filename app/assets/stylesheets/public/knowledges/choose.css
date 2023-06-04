@@ -13,6 +13,7 @@
 .box1, .box2 {
   min-height: 75%;
   border: solid 1px black;
+  background-color: white;
 }
 
 .box1 {
@@ -122,9 +123,21 @@ p {
 
 .btn1, .btn2 {
   font-size: 0.7rem;
-  width: 40%;
+  width: 50%;
 }
   .subbox {
     flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 339.5px) {
+  .subbox{
+    display: block;
+  }
+  .box1, .box2 {
+    width: 100%;
+    min-height: 50%;
+    margin: 0px;
+    background-color: #CCCCFF;
   }
 }

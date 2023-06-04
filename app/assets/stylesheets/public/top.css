@@ -34,27 +34,41 @@ thead th {
   border-right: dotted 1.5px black;
 }
 
+.col1 {
+  min-width: 74px;
+}
+
+.col2 {
+  min-width: 320px;
+}
+
 .col3 {
-  width: 150px;
+  min-width: 140px;
 }
 
 .classification-and-category {
-  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 14px;
 }
 
 .classification {
+  display: inline-block;
   background-color: #CBFFD3;
   border: solid 2px #339933;
   border-radius: 5px;
   padding: 1px 10px;
+  margin-top: 4px;
+  margin-right: 5px;
 }
 
 .category {
+  display: inline-block;
   background-color: #DCC2FF;
   border: solid 2px #9900FF;
   border-radius: 5px;
   padding: 1px 10px;
+  margin-top: 4px;
 }
 
 .ranking-image {
@@ -97,6 +111,12 @@ tbody tr:hover {
 
 tbody tr:nth-child(n+1):nth-child(-n+9) {
   border-bottom: solid 1.5px #EEEEEE;
+}
+
+@media (max-width: 767.5px) {
+  .box {
+    overflow: auto;
+  }
 }
 
 @media (max-width: 554px) {

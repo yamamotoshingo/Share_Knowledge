@@ -3,17 +3,17 @@
 <% end %>
 <div class="container-fluid h-100 mx-0 allbox">
   <div class="row justify-content-center align-items-center subbox h-100">
-    <div class="col-sm-5 col-xl-4 d-flex flex-column justify-content-center align-items-center box1 bg-white">
+    <div class="col-sm-5 col-xl-4 d-flex flex-column justify-content-center align-items-center box1">
       <%= image_tag 'trivia.png', class: 'image1' %>
       <p class="text-center">何か面白い話を探している方は<br />こちら</p>
       <%= image_tag 'down_arrow.png', class: 'image2' %>
-      <%= link_to '雑学', knowledges_path(classification: 0), class: 'btn btn1 rounded-pill d-block mx-auto' %>
+      <%= link_to '雑学', knowledges_path(classification: 0), class: 'btn btn1 rounded-pill d-block' %>
     </div>
-    <div class="col-sm-5 col-xl-4 d-flex flex-column justify-content-center align-items-center box2 bg-white">
+    <div class="col-sm-5 col-xl-4 d-flex flex-column justify-content-center align-items-center box2">
       <%= image_tag 'experience.png', class: 'image1' %>
       <p class="text-center">他の人の経験談を知りたい方は<br />こちら</p>
       <%= image_tag 'down_arrow.png', class: 'image2' %>
-      <%= link_to '経験談', knowledges_path(classification: 1), class: 'btn btn2 rounded-pill d-block mx-auto' %>
+      <%= link_to '経験談', knowledges_path(classification: 1), class: 'btn btn2 rounded-pill d-block' %>
     </div>
   </div>
 </div>
