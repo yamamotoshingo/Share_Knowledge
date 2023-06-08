@@ -8,6 +8,10 @@
   padding: 16px 24px 0px;
 }
 
+.category-list {
+  display: flex;
+}
+
 .article-list, .article {
   border: solid 1px black;
 }
@@ -129,6 +133,10 @@
   width: 100px;
 }
 
+.search {
+  display: flex;
+}
+
 .lift-button {
   width: 100px;
   height: 30px;
@@ -149,5 +157,35 @@
 
   .article-list {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 599.5px) {
+  .search-form {
+    margin-bottom: 15px;
+  }
+
+  .search {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media (max-width: 466px) {
+  .article {
+    display: block;
+  }
+
+  .image-all {
+    text-align: center;
+  }
+
+  .image1 {
+    width: 100%;
+    height: 160px;
+    margin: 10px 0;
+  }
+  .category-list {
+    display: block;
   }
 }
